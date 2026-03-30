@@ -10,21 +10,21 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPOS_DIR="$SCRIPT_DIR/../Sources"
 
 REPOS="
-https://github.com/apple/swift-corelibs-libdispatch.git
-https://github.com/gnustep/libobjc2.git
-https://github.com/gnustep/tools-make.git
-https://github.com/gnustep/libs-base.git
-https://github.com/gnustep/libs-gui.git
-https://github.com/gnustep/libs-back.git
-https://github.com/gershwin-desktop/gershwin-system.git
-https://github.com/gershwin-desktop/gershwin-workspace.git
-https://github.com/gershwin-desktop/gershwin-systempreferences.git
-https://github.com/gershwin-desktop/gershwin-eau-theme.git
-https://github.com/gershwin-desktop/gershwin-terminal.git
-https://github.com/gershwin-desktop/gershwin-textedit.git
-https://github.com/gershwin-desktop/gershwin-windowmanager.git
-https://github.com/gershwin-desktop/gershwin-components.git
-https://github.com/gershwin-desktop/gershwin-assets.git
+https://github.com/ngstep-app/swift-corelibs-libdispatch.git
+https://github.com/ngstep-app/libobjc2.git
+https://github.com/ngstep-app/tools-make.git
+https://github.com/ngstep-app/libs-base.git
+https://github.com/ngstep-app/libs-gui.git
+https://github.com/ngstep-app/libs-back.git
+https://github.com/ngstep-app/gershwin-system.git
+https://github.com/ngstep-app/gershwin-workspace.git
+https://github.com/ngstep-app/gershwin-systempreferences.git
+https://github.com/ngstep-app/gershwin-eau-theme.git
+https://github.com/ngstep-app/gershwin-terminal.git
+https://github.com/ngstep-app/gershwin-textedit.git
+https://github.com/ngstep-app/gershwin-windowmanager.git
+https://github.com/ngstep-app/gershwin-components.git
+https://github.com/ngstep-app/gershwin-assets.git
 "
 
 mkdir -p "$REPOS_DIR"
