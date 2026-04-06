@@ -101,15 +101,33 @@ $MAKE_CMD -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
 
+cd "$REPOS_DIR/libs-corebase"
+./configure \
+  CPPFLAGS="-I/System/Library/Headers" \
+  LDFLAGS="-L/System/Library/Libraries"
+$MAKE_CMD -j"$CPUS" || exit 1
+$MAKE_CMD install
+$MAKE_CMD clean
+
 cd "$REPOS_DIR/libs-gui"
 ./configure
 $MAKE_CMD -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
 
+cd "$REPOS_DIR/libs-opal"
+$MAKE_CMD -j"$CPUS" || exit 1
+$MAKE_CMD install
+$MAKE_CMD clean
+
 cd "$REPOS_DIR/libs-back"
 export fonts=no
-./configure
+./configure --enable-graphics=opal --enable-server=x11
+$MAKE_CMD -j"$CPUS" || exit 1
+$MAKE_CMD install
+$MAKE_CMD clean
+
+cd "$REPOS_DIR/libs-quartzcore"
 $MAKE_CMD -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean

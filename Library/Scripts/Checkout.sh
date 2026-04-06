@@ -14,8 +14,11 @@ https://github.com/ngstep-app/swift-corelibs-libdispatch.git
 https://github.com/ngstep-app/libobjc2.git
 https://github.com/ngstep-app/tools-make.git
 https://github.com/ngstep-app/libs-base.git
+https://github.com/ngstep-app/libs-corebase.git
 https://github.com/ngstep-app/libs-gui.git
+https://github.com/ngstep-app/libs-opal.git
 https://github.com/ngstep-app/libs-back.git
+https://github.com/ngstep-app/libs-quartzcore.git
 https://github.com/ngstep-app/gershwin-system.git
 https://github.com/ngstep-app/gershwin-workspace.git
 https://github.com/ngstep-app/gershwin-systempreferences.git
