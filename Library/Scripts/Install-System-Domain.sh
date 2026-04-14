@@ -89,10 +89,6 @@ cmake .. \
 
 export GNUSTEP_INSTALLATION_DOMAIN="SYSTEM"
 
-# Patch libs-base
-echo "Patching libs-base..."
-( cd "$WORKDIR/Library/Patches" && REPO_DIR="$REPOS_DIR/libs-base" sh ./apply_configure_constant_string_class_patch.sh )
-
 cd "$REPOS_DIR/libs-base"
 ./configure \
   --with-dispatch-include=/System/Library/Headers \
@@ -108,6 +104,10 @@ cd "$REPOS_DIR/libs-corebase"
 $MAKE_CMD -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
+
+# Patch libs-gui
+echo "Patching libs-gui..."
+( cd "$WORKDIR/Library/Patches" && REPO_DIR="$REPOS_DIR/libs-gui" sh ./apply_libs-gui-menu-mouseup_patch.sh )
 
 cd "$REPOS_DIR/libs-gui"
 ./configure
@@ -200,6 +200,11 @@ $MAKE_CMD install
 $MAKE_CMD clean
 
 cd "$REPOS_DIR/gershwin-components/appwrap"
+$MAKE_CMD CPPFLAGS="-DGNUSTEP_INSTALL_TYPE=SYSTEM" -j"$CPUS" || exit 1
+$MAKE_CMD install
+$MAKE_CMD clean
+
+cd "$REPOS_DIR/gershwin-components/pkgwrap"
 $MAKE_CMD CPPFLAGS="-DGNUSTEP_INSTALL_TYPE=SYSTEM" -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
