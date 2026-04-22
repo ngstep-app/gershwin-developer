@@ -108,6 +108,7 @@ $MAKE_CMD clean
 # Patch libs-gui
 echo "Patching libs-gui..."
 ( cd "$WORKDIR/Library/Patches" && REPO_DIR="$REPOS_DIR/libs-gui" sh ./apply_libs-gui-menu-mouseup_patch.sh )
+( cd "$WORKDIR/Library/Patches" && REPO_DIR="$REPOS_DIR/libs-gui" sh ./apply_libs-gui-menu-dropdown-tracking_patch.sh ) # https://github.com/gnustep/libs-back/issues/76
 
 cd "$REPOS_DIR/libs-gui"
 ./configure
@@ -119,6 +120,10 @@ cd "$REPOS_DIR/libs-opal"
 $MAKE_CMD -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
+
+# Patch libs-back
+echo "Patching libs-back..."
+( cd "$WORKDIR/Library/Patches" && REPO_DIR="$REPOS_DIR/libs-back" sh ./apply_libs_back_net_wm_pid_patch.sh ) # https://github.com/gnustep/libs-back/issues/74
 
 cd "$REPOS_DIR/libs-back"
 export fonts=no
@@ -173,12 +178,7 @@ $MAKE_CMD CPPFLAGS="-DGNUSTEP_INSTALL_TYPE=SYSTEM" -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
 
-cd "$REPOS_DIR/gershwin-windowmanager/XCBKit"
-$MAKE_CMD CPPFLAGS="-DGNUSTEP_INSTALL_TYPE=SYSTEM -include unistd.h" -j"$CPUS" || exit 1
-$MAKE_CMD install
-$MAKE_CMD clean
-
-cd "$REPOS_DIR/gershwin-windowmanager/WindowManager"
+cd "$REPOS_DIR/gershwin-windowmanager/"
 $MAKE_CMD CPPFLAGS="-DGNUSTEP_INSTALL_TYPE=SYSTEM" -j"$CPUS" || exit 1
 $MAKE_CMD install
 $MAKE_CMD clean
